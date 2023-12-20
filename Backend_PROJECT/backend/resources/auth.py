@@ -176,20 +176,19 @@ class SearchResource(Resource):
         return make_response(jsonify({"users": user_list}), 200)
     
 class BookingResource(Resource):
-    def post(self):
+    def post(self, user_id):
         data = request.json
         name = data.get("name")
         email = data.get("email")
         services = data.get("services")
         address = data.get("address")
         date = data.get("date")
-        users_id = data.get("users_id")
 
-        booking = Booking(name=name, services=services, address=address, date=date, email=email, users_id=users_id)
+        booking = Booking(name=name, services=services, address=address, date=date, email=email, user_id=user_id)
         db.session.add(booking)
         db.session.commit()
 
-        mechanics = User.query.get(users_id)
+        mechanics = User.query.get(user_id)
         mechanic_email = mechanics.email
         send_booking_car_owner(email)
         send_booking_email(mechanic_email, name, services, address, email, date)

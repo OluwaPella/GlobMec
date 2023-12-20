@@ -25,7 +25,7 @@ def create_app():
     api.add_resource(LogoutResource, '/api/auth/logout')
     api.add_resource(SearchResource, '/api/auth/Search')
     api.add_resource(UsersResource, '/api/auth/Users')
-    api.add_resource(BookingResource,'/api/auth/Booking')
+    api.add_resource(BookingResource,'/api/auth/<int:user_id>/Booking')
 
 
     return app

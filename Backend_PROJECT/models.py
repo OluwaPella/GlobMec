@@ -45,7 +45,7 @@ class TokenBlocklist(db.Model):
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(250), nullable=False)
+    name = db.Column(db.String(60), nullable=False)
     email = db.Column(db.String(120), nullable=False)
     services = db.Column(db.String(), nullable=False)
     address = db.Column(db.String(), nullable=False)
