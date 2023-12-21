@@ -20,7 +20,7 @@
             <div class="class form-content">
                 <header>Signup</header>
 
-		<form action="{{ url_for('register') }}" method="post" autocomplete="off">
+		<form id="registrationForm" autocomplete="off">
 
                     <div class="field input-field">
                         <input type="text" name="name" id="name" placeholder="Name" class="input">
@@ -49,6 +49,7 @@
                     <div class="field input-field">
                         <input type="email" name="email" id="email" placeholder="Email" class="input">
                     </div>
+                     
 
                     <div class="field input-field">
                         <input type="password" name="password" id="password" placeholder="Password" class="password">
@@ -57,6 +58,30 @@
                     <div class="field input-field">
                         <input type="password" name="conpass" id="conpass" placeholder="Confirm Password" class="password">
                         <i class='bx bx-hide eye-icon'></i>
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="country" name="country" id="country" placeholder="Country" class="input">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="provinces" name="provinces" id="provinces" placeholder="provinces" class="provinces">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="city" name="city" id="city" placeholder="City" class="city">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="state" name="state" id="state" placeholder="State" class="state">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="districts" name="districts" id="districts" placeholder="Districts" class="districts">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="zipcode" name="zipcode" id="zipcode" placeholder="zipcode" class="zipcode">
                     </div>
 
                     <div class="field button-field">

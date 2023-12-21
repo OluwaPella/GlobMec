@@ -1,4 +1,4 @@
-iconst forms = document.querySelector(".forms"),
+const forms = document.querySelector(".forms"),
     pwShowHide = document.querySelectorAll(".eye-icon"),
     links = document.querySelectorAll(".link");
 
@@ -41,12 +41,17 @@ menu.onclick = function () {
 
 document.getElementById('registrationForm').addEventListener('submit', function (event) {
     event.preventDefault();
+
+    console.log('Form submission started');
+
     const formData = new FormData(event.target);
 
     const jsonData = {};
     formData.forEach((value, key) => {
         jsonData[key] = value;
     });
+
+    console.log('Sending request to backend:', jsonData);
 
     fetch('http://127.0.0.1:5001/api/auth/register', {
         method: 'POST',
