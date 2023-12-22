@@ -1,3 +1,12 @@
+fetch('http://127.0.0.1:5001/api/auth/Users')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+  
 const forms = document.querySelector(".forms"),
     pwShowHide = document.querySelectorAll(".eye-icon"),
     links = document.querySelectorAll(".link");
@@ -41,17 +50,13 @@ menu.onclick = function () {
 
 document.getElementById('registrationForm').addEventListener('submit', function (event) {
     event.preventDefault();
-
-    console.log('Form submission started');
-
+ls
     const formData = new FormData(event.target);
 
     const jsonData = {};
     formData.forEach((value, key) => {
         jsonData[key] = value;
     });
-
-    console.log('Sending request to backend:', jsonData);
 
     fetch('http://127.0.0.1:5001/api/auth/register', {
         method: 'POST',
@@ -70,10 +75,11 @@ document.getElementById('registrationForm').addEventListener('submit', function 
     })
     .then(data => {
 
-        console.log('Registration successful:', data);
+        console.log(data);
     })
     .catch(error => {
         console.error('Registration error:', error.message || 'invaild input');
     });
     
 });
+
