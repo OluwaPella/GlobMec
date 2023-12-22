@@ -14,7 +14,6 @@ def create_app():
     jwt.init_app(app)
     mail.init_app(app)
     CORS(app)
-
     with app.app_context():
         db.create_all()
 
