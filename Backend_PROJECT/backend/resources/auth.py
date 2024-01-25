@@ -17,7 +17,7 @@ class RegisterResource(Resource):
 
         existing_user = User.query.filter(User.email == data.get('email')) and User.query.filter(User.contact == data.get('contact')).first()
         if existing_user:
-            return make_response(jsonify({"message": "User  or contacts already exists"}), 400)
+            return jsonify({"message": "User  or contacts already exists"})
 
         password = data.get('password')
         if not all([data.get('name'), data.get('last_name'), data.get('email'), password, data.get('gender'), data.get('contact'), data.get('country'), data.get('services_offered')]):
@@ -25,7 +25,7 @@ class RegisterResource(Resource):
         elif any(c.isalpha() for c in password) and any(c.isdigit() for c in password): 
             hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         else:
-            return make_response(jsonify({'message': 'Password must contain at least one letter and one number'}), 401)
+            return jsonify({'message': 'Password must contain at least one letter and one number'})
 
         new_user = User(
                 name=data.get('name'),
@@ -50,7 +50,7 @@ class RegisterResource(Resource):
         db.session.add(new_user)
         db.session.commit()
         
-        return make_response(jsonify({'message': 'Register successful'}), 201)
+        return jsonify({'message': 'Register successful'})
 
 class LoginResource(Resource):
     def post(self):
@@ -70,8 +70,7 @@ class LoginResource(Resource):
                     'email' : user.email
                     }
             }), 200)
-        flash("Invalid email or password", "error")
-        return make_response(jsonify({"error": "Invalid email or password"}), 401)
+        return jsonify({"error": "Invalid email or password"})
       
 
 class LogoutResource(Resource):
@@ -82,9 +81,9 @@ class LogoutResource(Resource):
         if not TokenBlocklist.is_jti_in_blocklist(jTi):
             token_blocklist = TokenBlocklist(jti=jTi)
             token_blocklist.save()
-            return make_response(jsonify({"logout successfully": current_user}), 200)
+            return jsonify({"logout successfully": current_user})
         else:
-            return make_response(jsonify({"message": "Token already revoked"}), 400)
+            return jsonify({"message": "Token already revoked"})
     
 class UsersResource(Resource):
     def get(self):
@@ -115,7 +114,7 @@ class UsersResource(Resource):
             }
             user_list.append(user_dict)
 
-            return make_response(jsonify({'users': user_list}), 200)
+            return jsonify({'users': user_list})
 
         
 class SearchResource(Resource):
@@ -148,7 +147,7 @@ class SearchResource(Resource):
 
         users = users_query.all()
         if not users:
-            return make_response(jsonify({'message': 'No users found!'}), 200)
+            return jsonify({'message': 'No users found!'})
         user_list = []
         for user in users:
             user_details = {
@@ -173,7 +172,7 @@ class SearchResource(Resource):
                         }
             user_list.append(user_details)
             
-        return make_response(jsonify({"users": user_list}), 200)
+        return jsonify({"users": user_list})
     
 class BookingResource(Resource):
     def post(self, user_id):
@@ -193,7 +192,7 @@ class BookingResource(Resource):
         send_booking_car_owner(email)
         send_booking_email(mechanic_email, name, services, address, email, date)
        
-        return make_response(jsonify({'message': "Booking successfull"}), 200)
+        return jsonify({'message': "Booking successfull"})
 
 def send_booking_email(mechanic_email, name, services, address, email, date):
     subject = 'New Car Booking'
