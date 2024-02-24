@@ -194,7 +194,7 @@ class BookingResource(Resource):
        
         return jsonify({'message': "Booking successfull"})
 
-def send_booking_email(mechanic_email, name, services, address, email, date):
+"""def send_booking_email(mechanic_email, name, services, address, email, date):
     subject = 'New Car Booking'
     body = f"Dear Mechanic,\n\nYou have a new booking from {name} ({mechanic_email}) {services} {address} {email} for {date}.\n\nBest regards,\nYour Car Booking System"
     msg = Message(subject, recipients=[mechanic_email], body=body)
@@ -205,4 +205,5 @@ def send_booking_car_owner(email):
     body = f"Dear Customer,Best regards, GloMec Your best Car Booking System"
     msg = Message(subject, recipients=[email], body=body)
     mail.send(msg)
+"""
 
