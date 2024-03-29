@@ -46,7 +46,7 @@ html{
     color: #fff;
 }
 
-#item li a:hover, #item .icon i:hover{
+#item li a:hover, #item .icon .auth-btn:hover, #item .icon i:hover{
     color: #ff5733;
     cursor: pointer;
 }
@@ -55,6 +55,34 @@ html{
     color: #fff;
     padding-right: 30px;
     font-weight: 100;
+}
+
+.icon .btnSignin-popup{
+    width: 80px;
+    height: 35px;
+    outline: none;
+    border: 1px solid #ff5733;
+    background: transparent;
+    font-weight: 600;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #fff;
+
+}
+.auth-btn{
+    margin-left:  10px;
+}
+.icon .btnSignup-popup{
+    width: 80px;
+    height: 35px;
+    background: #ff5733;
+    border: 1px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+
 }
 
 #bar{
