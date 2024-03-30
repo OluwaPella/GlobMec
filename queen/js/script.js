@@ -67,7 +67,7 @@ document.getElementById('registrationForm').addEventListener('submit', function 
     })
     .then(response => {
         if (response.ok) {
-            return response.json();
+            console.log(JSON.stringify(response.json()))
         } else {
             return response.json().then(error => Promise.reject(error));
 
