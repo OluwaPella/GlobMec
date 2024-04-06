@@ -20,8 +20,8 @@ class RegisterResource(Resource):
             return jsonify({"message": "User  or contacts already exists"})
 
         password = data.get('password')
-        if not all([data.get('name'), data.get('last_name'), data.get('email'), password, data.get('gender'), data.get('contact'), data.get('country'), data.get('services_offered')]):
-            return  make_response(jsonify({'message': 'Incomplete details'}), 401)
+        if not all([data.get('name'), data.get('lastname'), data.get('email'), password, data.get('gender'), data.get('contact'), data.get('country'), data.get('services')]):
+            return jsonify({'message': 'Incomplete details'})
         elif any(c.isalpha() for c in password) and any(c.isdigit() for c in password): 
             hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         else:
@@ -29,12 +29,12 @@ class RegisterResource(Resource):
 
         new_user = User(
                 name=data.get('name'),
-                last_name=data.get('last_name'),
+                lastname=data.get('lastname'),
                 email=data.get('email'),
                 password=hashed_password,
                 gender=data.get('gender'),
                 contact=data.get('contact'),
-                services_offered=data.get('services_offered')
+                services=data.get('services')
         )
         new_user_address = Address(
                 country=data.get('country'),
@@ -95,11 +95,11 @@ class UsersResource(Resource):
             user_dict = {
             'id': user.id,
             'name': user.name,
-            'last_name': user.last_name,
+            'lastname': user.lastname,
             'email': user.email,
             'gender': user.gender,
             'contact': user.contact,
-            'services_offered': user.services_offered,
+            'services': user.services,
             'addresses': [
                     {
                         'country': address.country,
@@ -152,11 +152,11 @@ class SearchResource(Resource):
         for user in users:
             user_details = {
                 "name": user.name,
-                "last_name": user.last_name,
+                "lastname": user.lastname,
                 "email": user.email,
                 "gender": user.gender,
                 "contact": user.contact,
-                "services_offered": user.services_offered,
+                "services": user.services,
                 "addresses": [
                     {
                         "country": address.country,
