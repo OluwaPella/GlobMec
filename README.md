@@ -14,6 +14,6 @@
      <section>
         <h2>Tech Stack</h2>
         <p><strong>Frontend:</strong> HTML, CSS, JavaScript</p>
-        <p><strong>Backend:</strong> Python (Flask)</p>
+        <p><strong>Backend:</strong> Python (Flask), RESTFUL API</p>
     </section>
 
