@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from backend.resources.auth import RegisterResource, LoginResource, LogoutResource, SearchResource, UsersResource, BookingResource, jwt, bcrypt, mail
+from backend.resources.Controller import RegisterResource, LoginResource, LogoutResource, SearchResource, UsersResource, BookingResource, jwt, bcrypt, mail
 from config import Config
 from flask_cors import CORS
 from models import db 
@@ -19,12 +19,12 @@ def create_app():
 
 
     api = Api(app)
-    api.add_resource(RegisterResource, '/api/auth/register')
-    api.add_resource(LoginResource, '/api/auth/login')
-    api.add_resource(LogoutResource, '/api/auth/logout')
-    api.add_resource(SearchResource, '/api/auth/Search')
-    api.add_resource(UsersResource, '/api/auth/Users')
-    api.add_resource(BookingResource,'/api/auth/<int:user_id>/Booking')
+    api.add_resource(RegisterResource, '/api/Controller/register')
+    api.add_resource(LoginResource, '/api/Controller/login')
+    api.add_resource(LogoutResource, '/api/Controller/logout')
+    api.add_resource(SearchResource, '/api/Controller/Search')
+    api.add_resource(UsersResource, '/api/Controller/Users')
+    api.add_resource(BookingResource,'/api/Controller/<int:user_id>/Booking')
 
 
     return app

@@ -58,16 +58,17 @@ document.getElementById('registrationForm').addEventListener('submit', function 
         jsonData[key] = value;
     });
 
-    fetch('http://127.0.0.1:5001/api/auth/register', {
+    fetch('http://127.0.0.1:5000/api/auth/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(jsonData),
     })
-    .then(response => {
+    .then(async(response) => {
         if (response.ok) {
-            console.log(JSON.stringify(response.json()))
+            console.log(await response.json())
+            window.location.replace("./login.html")
         } else {
             return response.json().then(error => Promise.reject(error));
 

@@ -1,4 +1,5 @@
 import psycopg2
+from models import User, Address
 
 # connect to the postgresql database
 conn = psycopg2.connect(
@@ -8,21 +9,10 @@ conn = psycopg2.connect(
     user="GlobMec",
     password="global44",
     )
-
+    
 cur = conn.cursor()
-
-cur.execute("SELECT * FROM User")
-User = cur.fetchall()
-cur.execute("SELECT * FROM Address")
-Address = cur.fetchall()
-
-for rows in User:
-    print(rows)
-
-for row in Address:
-    print(row)
-
-
+cur.execute(User)
+cur.execute(Address)
 
 cur.close()
 conn.close()

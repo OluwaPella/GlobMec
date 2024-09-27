@@ -20,7 +20,7 @@ class User(db.Model):
     
 class Address(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    country = db.Column(db.String)
+    country = db.Column(db.String) 
     state = db.Column(db.String)
     city =  db.Column(db.String)
     districts = db.Column(db.String)
@@ -30,18 +30,13 @@ class Address(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=True, nullable=False)
     user = db.relationship('User', back_populates='addresses')
 
-class TokenBlocklist(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    jti = db.Column(db.String(),  nullable=False)
+class Session(db.model):
+    Session_id = db.Column(db.string, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=True, nullable=False)
+    user = db.relationship('User', back_populates='sessions')
     created_at = db.Column(db.DateTime, default=datetime.now())
+    updated_at =  db.Column(db.DateTime, onupdate=datetime.now())
 
-    @classmethod
-    def is_jti_in_blocklist(cls, jti):
-        return cls.query.filter_by(jti=jti).first() is not None
-
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
