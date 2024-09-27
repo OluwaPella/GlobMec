@@ -30,20 +30,6 @@ html{
     background: #fff;
 }
 
-.form-one.signup{
-   opacity: 0;
-   pointer-events: none; 
-}
-.forms.show-signup .form-one.signup{
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.forms.show-signup .form-one.login{
-    opacity: 0;
-   pointer-events: none;
-} 
-
 header{
     font-size: 28px;
     font-weight: 600;

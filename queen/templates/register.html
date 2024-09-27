@@ -8,7 +8,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <script src="../js/script.js"></script>
     
 </head>
 <body>
@@ -17,10 +18,10 @@
         <!-- Sign up  -->
 
         <div class="form-one signup">
-            <div class="class form-content">
+            <div class="form-content">
                 <header>Signup</header>
 
-		<form action="{{ url_for('register') }}" method="post" autocomplete="off">
+		<form id="registrationForm" autocomplete="off">
 
                     <div class="field input-field">
                         <input type="text" name="name" id="name" placeholder="Name" class="input">
@@ -43,12 +44,13 @@
                     </div>
 
                     <div class="field input-field">
-                        <input type="text" name="service" id="service" placeholder="Services Offered" class="input">
+                        <input type="text" name="services" id="service" placeholder="Services Offered" class="input">
                     </div>
                     
                     <div class="field input-field">
                         <input type="email" name="email" id="email" placeholder="Email" class="input">
                     </div>
+                     
 
                     <div class="field input-field">
                         <input type="password" name="password" id="password" placeholder="Password" class="password">
@@ -59,12 +61,36 @@
                         <i class='bx bx-hide eye-icon'></i>
                     </div>
 
+                    <div class="field input-field">
+                        <input type="country" name="country" id="country" placeholder="Country" class="input">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="provinces" name="provinces" id="provinces" placeholder="provinces" class="provinces">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="city" name="city" id="city" placeholder="City" class="city">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="state" name="state" id="state" placeholder="State" class="state">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="districts" name="districts" id="districts" placeholder="Districts" class="districts">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="zipcode" name="zipcode" id="zipcode" placeholder="zipcode" class="zipcode">
+                    </div>
+                    
                     <div class="field button-field">
-                        <button>Signup</button>
+                        <button type="submit">Signup</button>
                     </div>
 
                     <div class="form-link">
-                        <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+                        <span>Already have an account? <a href="login.html" class="link login-link">Login</a></span>
                     </div>
                 </form>
             </div>
@@ -87,9 +113,9 @@
         </div>
 
     </section>
+    <script src="../js/script.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
-    	<script src="../js/script.js"></script>
 </body>
 </html>
